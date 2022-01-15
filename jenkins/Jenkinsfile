@@ -4,12 +4,11 @@ pipeline {
     stages {
         stage('Build'){
             agent{
-                docker { image 'maven' }
+                any { image 'node:12.16.2' args '-p 3000:3000' }
             }
             steps {
                 sh "mvn package -Dmaven.test.skip=true" 
             }
         }
     }
-
 }
